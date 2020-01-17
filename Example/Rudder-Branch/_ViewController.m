@@ -7,6 +7,7 @@
 //
 
 #import "_ViewController.h"
+#import <RudderSDKCore/RudderSDKCore.h>
 
 @interface _ViewController ()
 
@@ -18,6 +19,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[RudderClient sharedInstance] track:@"some_track_event"];
 }
 
 - (void)didReceiveMemoryWarning

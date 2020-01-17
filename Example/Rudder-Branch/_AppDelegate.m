@@ -7,12 +7,20 @@
 //
 
 #import "_AppDelegate.h"
+#import <RudderSDKCore/RudderSDKCore.h>
+#import "RudderBranchFactory.h"
 
 @implementation _AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+    [builder withEndPointUrl:@"https://18231bbc.ngrok.io"];
+    [builder withFactory:[RudderBranchFactory instance]];
+    [builder withLoglevel:4];
+    
+    [RudderClient getInstance:@"1W6RSMbAcWC2TzuSl1t8CqKyppX" config:[builder build]];
     return YES;
 }
 

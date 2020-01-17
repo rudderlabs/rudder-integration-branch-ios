@@ -1,6 +1,0 @@
-framework module Rudder_Branch {
-  umbrella header "Rudder-Branch-umbrella.h"
-
-  export *
-  module * { export * }
-}
