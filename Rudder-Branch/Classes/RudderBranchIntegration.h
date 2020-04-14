@@ -6,9 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RudderSDKCore/RudderIntegration.h>
-#import <RudderSDKCore/RudderClient.h>
-#import <RudderSDKCore/RudderConfig.h>
+#import <Rudder/Rudder.h>
 #import "Branch/Branch.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Branch *branchInstance;
 
 - (instancetype) initWithConfig: (NSDictionary *) destinationConfig
-                   rudderClient: (RudderClient*) rudderClient
+                  rudderClient: (RudderClient*) rudderClient
                   rudderConfig : (RudderConfig*) rudderConfig;
 
 @end

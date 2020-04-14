@@ -304,14 +304,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Rudder-Branch_Example/Pods-Rudder-Branch_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
+				"${BUILT_PRODUCTS_DIR}/Rudder/Rudder.framework",
 				"${BUILT_PRODUCTS_DIR}/Rudder-Branch/Rudder_Branch.framework",
-				"${BUILT_PRODUCTS_DIR}/RudderSDKCore/RudderSDKCore.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rudder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rudder_Branch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RudderSDKCore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

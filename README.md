@@ -1,6 +1,3 @@
-[![Version](https://img.shields.io/cocoapods/v/Rudder-Branch.svg?style=flat)](https://cocoapods.org/pods/Rudder-Branch)
-[![Platform](https://img.shields.io/cocoapods/p/Rudder-Branch.svg?style=flat)](https://cocoapods.org/pods/Rudder-Branch)
-
 # What is Rudder?
 
 **Short answer:**
@@ -12,27 +9,26 @@ Rudder is a platform for collecting, storing and routing customer event data to 
 Released under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Getting Started with BranchIO Integration of Android SDK
-1. Add [BranchIO](https://branch.io) as a destination in the [Dashboard](https://app.rudderlabs.com/) and define ```apiToken``` and ```eventMapping```
+1. Add [BranchIO](https://branch.io) as a destination in the [Dashboard](https://app.rudderlabs.com/) and define ```branchKey```
 
 2. Rudder-Branch is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Rudder-Branch'
+pod 'Rudder-Branch', '0.1.3'
 ```
 
 ## Initialize ```RudderClient```
 Put this code in your ```AppDelegate.m``` file under the method ```didFinishLaunchingWithOptions```
 ```
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-[builder withEndPointUrl:YOUR_DATA_PLANE_URL];
+[builder withDataPlaneUrl:<DATA_PLANE_URL>];
 [builder withFactory:[RudderBranchFactory instance]];
-[RudderClient getInstance:YOUR_WRITE_KEY config:[builder build]];
+[builder withLoglevel:RudderLogLevelDebug];
+[RudderClient getInstance:<WRITE_KEY> config:[builder build]];
 ```
 
 ## Send Events
 Follow the steps from [Rudder iOS SDK](https://github.com/rudderlabs/rudder-sdk-ios)
 
-# Coming Soon
-1. Native platform SDK integration support
-2. More documentation
-3. More destination support
+## Contact Us
+If you come across any issues while configuring or using RudderStack, please feel free to [contact us](https://rudderstack.com/contact/) or start a conversation on our [Discord](https://discordapp.com/invite/xNEdEGw) channel. We will be happy to help you.

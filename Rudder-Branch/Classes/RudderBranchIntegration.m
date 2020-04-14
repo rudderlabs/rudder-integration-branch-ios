@@ -45,8 +45,8 @@
         NSString *branchKey = [_config objectForKey:@"branchKey"];
         if (branchKey != nil && ![branchKey isEqualToString:@""]) {
             _branchInstance = [Branch getInstance:branchKey];
-            if (rudderConfig.logLevel >= 4) {
-                [_branchInstance setDebug];
+            if (rudderConfig.logLevel >= RudderLogLevelDebug) {
+                [_branchInstance enableLogging];
             }
         }
     }

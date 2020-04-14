@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Rudder-Branch'
-  s.version          = '0.1.0'
+  s.version          = '0.1.3'
   s.summary          = 'Privacy and Security focused Segment-alternative. BranchIO Native SDK integration support.'
 
   s.description      = <<-DESC
@@ -8,14 +8,14 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = 'https://github.com/rudderlabs/rudder-integration-branch-ios'
   s.license          = { :type => "Apache", :file => "LICENSE" }
-  s.author           = { 'Rudderlabs' => 'arnab@rudderlabs.com' }
-  s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-branch-ios.git' }
+  s.author           = { 'RudderStack' => 'arnab@rudderlabs.com' }
+  s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-branch-ios.git', :tag => 'v0.1.3' }
   s.platform         = :ios, "9.0"
 
   s.ios.deployment_target = '8.0'
                      
   s.source_files = 'Rudder-Branch/Classes/**/*'
   
-  s.dependency 'RudderSDKCore'
+  s.dependency 'Rudder', '~> 1.0.1'
   s.dependency 'Branch'
 end
