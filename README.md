@@ -9,22 +9,21 @@ Rudder is a platform for collecting, storing and routing customer event data to 
 Released under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Getting Started with BranchIO Integration of Android SDK
-1. Add [BranchIO](https://branch.io) as a destination in the [Dashboard](https://app.rudderlabs.com/) and define ```branchKey```
+1. Add [BranchIO](https://branch.io) as a destination in the [Dashboard](https://app.rudderstack.com/) and define ```branchKey```
 
 2. Rudder-Branch is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Rudder-Branch', '0.1.3'
+pod 'Rudder-Branch'
 ```
 
 ## Initialize ```RudderClient```
 Put this code in your ```AppDelegate.m``` file under the method ```didFinishLaunchingWithOptions```
 ```
-RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:<DATA_PLANE_URL>];
 [builder withFactory:[RudderBranchFactory instance]];
-[builder withLoglevel:RudderLogLevelDebug];
-[RudderClient getInstance:<WRITE_KEY> config:[builder build]];
+[RSClient getInstance:<WRITE_KEY> config:[builder build]];
 ```
 
 ## Send Events
