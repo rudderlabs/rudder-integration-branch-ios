@@ -10,8 +10,8 @@
 @implementation RudderBranchIntegration
 
 - (instancetype)initWithConfig: (NSDictionary *) destinationConfig
-                  rudderClient: (RudderClient *) rudderClient
-                  rudderConfig: (RudderConfig *) rudderConfig {
+                  rudderClient: (RSClient *) rudderClient
+                  rudderConfig: (RSConfig *) rudderConfig {
     
     if (self == [super init]) {
         self.predefinedKeys = [NSArray arrayWithObjects:
@@ -45,7 +45,7 @@
         NSString *branchKey = [_config objectForKey:@"branchKey"];
         if (branchKey != nil && ![branchKey isEqualToString:@""]) {
             _branchInstance = [Branch getInstance:branchKey];
-            if (rudderConfig.logLevel >= RudderLogLevelDebug) {
+            if (rudderConfig.logLevel >= RSLogLevelDebug) {
                 [_branchInstance enableLogging];
             }
         }
@@ -54,7 +54,7 @@
     return self;
 }
 
-- (void)dump:(nonnull RudderMessage *)message {
+- (void)dump:(nonnull RSMessage *)message {
     if (message == nil) {
         return;
     }

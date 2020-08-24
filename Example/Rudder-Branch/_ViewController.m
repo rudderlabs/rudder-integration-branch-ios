@@ -20,8 +20,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [[RudderClient sharedInstance] track:@"some_track_event"];
-    [[RudderClient sharedInstance] track:@"Add To Cart" properties:@{@"price": @2.0, @"product_id": @"product_id_a", @"product_name": @"Product Name A"}];
+    [[RSClient sharedInstance] track:@"some_track_event"];
+    [[RSClient sharedInstance] track:@"Add To Cart" properties:@{@"price": @2.0, @"product_id": @"product_id_a", @"product_name": @"Product Name A"}];
 }
 
 - (void)didReceiveMemoryWarning

@@ -11,18 +11,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RudderBranchIntegration : NSObject<RudderIntegration, BranchDelegate>
+@interface RudderBranchIntegration : NSObject<RSIntegration, BranchDelegate>
 
 @property (nonatomic, strong) NSDictionary *config;
-@property (nonatomic, strong) RudderClient *client;
-@property (nonatomic, strong) RudderConfig *rudderConfig;
+@property (nonatomic, strong) RSClient *client;
+@property (nonatomic, strong) RSConfig *rudderConfig;
 @property (nonatomic, strong) NSArray *predefinedKeys;
 
 @property (nonatomic, strong) Branch *branchInstance;
 
 - (instancetype) initWithConfig: (NSDictionary *) destinationConfig
-                  rudderClient: (RudderClient*) rudderClient
-                  rudderConfig : (RudderConfig*) rudderConfig;
+                   rudderClient: (RSClient*) rudderClient
+                  rudderConfig : (RSConfig*) rudderConfig;
 
 @end
 
