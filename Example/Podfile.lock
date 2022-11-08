@@ -1,0 +1,35 @@
+PODS:
+  - Branch (0.34.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - Rudder (1.0.24)
+  - Rudder-Branch (1.0.0):
+    - Branch
+    - Rudder
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Rudder-Branch (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Branch
+    - FBSnapshotTestCase
+    - Rudder
+
+EXTERNAL SOURCES:
+  Rudder-Branch:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Branch: 446aeb832102f56f04edf5fa7cb0a752dc392ca7
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Rudder: 941cdf1a5c26fccf1fa92e9aac1b6685ae1d19f9
+  Rudder-Branch: 18ee320011cc1055a0d7f1b7e31664465c1493cb
+
+PODFILE CHECKSUM: 6c4ffeae21f51dfb7c9cd783be0f77d6e0b41199
+
+COCOAPODS: 1.11.2
