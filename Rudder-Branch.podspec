@@ -2,6 +2,11 @@ require 'json'
 
 package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
+branch_sdk_version = '~> 3.0.0'
+rudder_sdk_version = '~> 1.18'
+deployment_target = '12.0'
+branch_sdk = 'BranchSDK'
+
 Pod::Spec.new do |s|
   s.name             = 'Rudder-Branch'
   s.version          = package['version']
@@ -14,12 +19,26 @@ Pod::Spec.new do |s|
   s.license          = { :type => "Apache", :file => "LICENSE" }
   s.author           = { 'RudderStack' => 'arnab@rudderlabs.com' }
   s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-branch-ios.git', :tag => "v#{s.version}" }
-  s.platform         = :ios, "9.0"
+  s.platform         = :ios, "12.0"
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '12.0'
 
   s.source_files = 'Rudder-Branch/Classes/**/*'
+  
+  if defined?($BranchSDKVersion)
+    branch_sdk_version = $BranchSDKVersion
+    Pod::UI.puts "#{s.name}: Using user specified Branch SDK version '#{branch_sdk_version}'"
+  else
+    Pod::UI.puts "#{s.name}: Using default Branch SDK version '#{branch_sdk_version}'"
+  end
+  
+  if defined?($RudderSDKVersion)
+    Pod::UI.puts "#{s.name}: Using user specified Rudder SDK version '#{$RudderSDKVersion}'"
+    rudder_sdk_version = $RudderSDKVersion
+  else
+    Pod::UI.puts "#{s.name}: Using default Rudder SDK version '#{rudder_sdk_version}'"
+  end
 
-  s.dependency 'Rudder'
-  s.dependency 'Branch'
+  s.dependency 'Rudder', rudder_sdk_version
+  s.dependency branch_sdk, branch_sdk_version
 end

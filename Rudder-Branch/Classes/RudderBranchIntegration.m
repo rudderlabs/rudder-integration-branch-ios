@@ -36,19 +36,20 @@
                                @"variant",
                                @"product_id",
                                @"rating",
+                               @"query",
                                nil
-                               ];
-        self.config = destinationConfig;
-        self.client = rudderClient;
-        self.rudderConfig = rudderConfig;
-    
-        NSString *branchKey = [_config objectForKey:@"branchKey"];
-        if (branchKey != nil && ![branchKey isEqualToString:@""]) {
-            _branchInstance = [Branch getInstance:branchKey];
-            if (rudderConfig.logLevel >= RSLogLevelDebug) {
-                [_branchInstance enableLogging];
-            }
+        ];
+        
+        NSString *branchKey = [destinationConfig objectForKey:@"branchKey"];
+        if ([RudderUtils isEmpty:branchKey] == YES) {
+            [RSLogger logError:@"RudderBranchIntegration: Branch Key is empty. Aborting initialization."];
+            return nil;
         }
+        if (rudderConfig.logLevel >= RSLogLevelDebug) {
+            [_branchInstance enableLogging];
+        }
+        _branchInstance = [Branch getInstance:branchKey];
+        [RSLogger logDebug:@"RudderBranchIntegration: Branch SDK initialized."];
     }
     
     return self;
@@ -62,14 +63,17 @@
     NSString *eventType = message.type;
     
     if ([eventType isEqualToString:@"identify"]) {
-        NSMutableString *userId = [message.userId mutableCopy];
-        if([userId length] > 127) {
-            userId = [[userId substringToIndex:127] mutableCopy];
+        NSString *userId = [message.userId mutableCopy];
+        if ([RudderUtils isEmpty:userId] == YES) {
+            [RSLogger logDebug:@"RudderBranchIntegration: User Id is empty. Aborting identify event."];
+            return;
         }
+        userId = [RudderUtils truncateUserIdIfExceedsLimit:userId andLimit:127];
         [_branchInstance setIdentity:userId];
     } else if ([eventType isEqualToString:@"track"]) {
         NSString *eventName = message.event;
         if (eventName != nil) {
+                // Commerce Events
             if ([eventName isEqualToString:@"Product Added"]) {
                 BranchContentMetadata *pa_cmd = [self getSingleProductMetaData:message.properties];
                 BranchUniversalObject *pa_buo = [[BranchUniversalObject alloc] init];
@@ -99,7 +103,18 @@
                 BranchEvent *sc_be = [BranchEvent standardEvent:BranchStandardEventSpendCredits];
                 [self appendOrderProperty:sc_be property:message.properties];
                 [self logEventToBranch:sc_be property:message.properties];
-            } else if ([eventName isEqualToString:@"Products Searched"]) {
+            } else if ([eventName isEqualToString:@"Promotion Viewed"]) {
+                BranchEvent *pv_be = [BranchEvent standardEvent:BranchStandardEventViewAd];
+                [self logEventToBranch:pv_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Promotion Clicked"]) {
+                BranchEvent *pc_be = [BranchEvent standardEvent:BranchStandardEventClickAd];
+                [self logEventToBranch:pc_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Reserve"]) {
+                BranchEvent *r_be = [BranchEvent standardEvent:BranchStandardEventReserve];
+                [self logEventToBranch:r_be property:message.properties];
+            }
+                // Content Events
+            else if ([eventName isEqualToString:@"Products Searched"]) {
                 NSMutableArray *keywords = [[NSMutableArray alloc] init];
                 NSObject *keyword = [message.properties objectForKey:@"query"];
                 if (keyword != nil) {
@@ -120,13 +135,27 @@
                 BranchEvent *plv_be = [BranchEvent standardEvent:BranchStandardEventViewItems];
                 [self appendOrderProperty:plv_be property:message.properties];
                 [self logEventToBranch:plv_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Product Reviewed"]) {
+                BranchEvent *pr_be = [BranchEvent standardEvent:BranchStandardEventRate];
+                BranchUniversalObject *pr_buo = [[BranchUniversalObject alloc] init];
+                [pr_buo setContentMetadata:[self getSingleProductMetaData:message.properties]];
+                [pr_be setContentItems:[[NSArray alloc] initWithObjects:pr_buo, nil]];
+                [self logEventToBranch:pr_be property:message.properties];
             } else if ([eventName isEqualToString:@"Product Shared"]) {
                 BranchEvent *prs_be = [BranchEvent standardEvent:BranchStandardEventShare];
                 BranchUniversalObject *prs_buo = [[BranchUniversalObject alloc] init];
                 [prs_buo setContentMetadata:[self getSingleProductMetaData:message.properties]];
                 [prs_be setContentItems:[[NSArray alloc] initWithObjects:prs_buo, nil]];
                 [self logEventToBranch:prs_be property:message.properties];
-            } else if ([eventName isEqualToString:@"Complete Registration"]) {
+            } else if ([eventName isEqualToString:@"Initiate Stream"]) {
+                BranchEvent *is_be = [BranchEvent standardEvent:BranchStandardEventInitiateStream];
+                [self logEventToBranch:is_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Complete Stream"]) {
+                BranchEvent *cs_be = [BranchEvent standardEvent:BranchStandardEventCompleteStream];
+                [self logEventToBranch:cs_be property:message.properties];
+            }
+                // Lifecycle Events
+            else if ([eventName isEqualToString:@"Complete Registration"]) {
                 BranchEvent *cr_be = [BranchEvent standardEvent:BranchStandardEventCompleteRegistration];
                 [self logEventToBranch:cr_be property:message.properties];
             } else if ([eventName isEqualToString:@"Complete Tutorial"]) {
@@ -138,7 +167,21 @@
             } else if ([eventName isEqualToString:@"Unlock Achievement"]) {
                 BranchEvent *ua_be = [BranchEvent standardEvent:BranchStandardEventUnlockAchievement];
                 [self logEventToBranch:ua_be property:message.properties];
-            } else {
+            } else if ([eventName isEqualToString:@"Invite"]) {
+                BranchEvent *i_be = [BranchEvent standardEvent:BranchStandardEventInvite];
+                [self logEventToBranch:i_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Login"]) {
+                BranchEvent *l_be = [BranchEvent standardEvent:BranchStandardEventLogin];
+                [self logEventToBranch:l_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Start Trial"]) {
+                BranchEvent *st_be = [BranchEvent standardEvent:BranchStandardEventStartTrial];
+                [self logEventToBranch:st_be property:message.properties];
+            } else if ([eventName isEqualToString:@"Subscribe"]) {
+                BranchEvent *s_be = [BranchEvent standardEvent:BranchStandardEventSubscribe];
+                [self logEventToBranch:s_be property:message.properties];
+            }
+                // Custom events
+            else {
                 BranchEvent *ge_be = [BranchEvent customEventWithName:eventName];
                 [self logEventToBranch:ge_be property:message.properties];
             }
@@ -151,6 +194,11 @@
 - (void)reset {
     [_branchInstance logout];
 }
+
+- (void)flush { 
+    // Branch SDK doesn't support flush
+}
+
 
 - (BranchContentMetadata*) getSingleProductMetaData : (NSDictionary*) property {
     BranchContentMetadata *cmd = [[BranchContentMetadata alloc] init];
@@ -173,7 +221,7 @@
     }
     NSObject *category = [property objectForKey:@"category"];
     if (category != nil) {
-        [cmd setProductCategory:[[NSString alloc] initWithFormat:@"%@", category]];
+        [cmd setProductCategory:[RudderUtils getProductCategory:[NSString stringWithFormat:@"%@", category]]];
     }
 //    give sku higher priority. if sku is not present take productid as sku
     NSObject *sku = [property objectForKey:@"sku"];
