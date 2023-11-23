@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "RudderUtils.h"
-#import "BranchSDK/BNCProductCategory.h"
 
 @implementation RudderUtils
 

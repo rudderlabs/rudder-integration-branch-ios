@@ -7,12 +7,13 @@
 
 #ifndef RudderUtils_h
 #define RudderUtils_h
+#import "BranchSDK/BNCProductCategory.h"
 
 @interface RudderUtils : NSObject
 
 +(BOOL)isEmpty:(NSString*)value;
 +(NSString*)truncateUserIdIfExceedsLimit:(NSString*)userId andLimit:(int)limit;
-+(BNCProductCategory) getProductCategory:(NSString*)category;
++(BNCProductCategory)getProductCategory:(NSString*)category;
 
 @end
 
