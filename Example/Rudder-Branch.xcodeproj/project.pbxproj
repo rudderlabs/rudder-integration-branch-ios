@@ -23,6 +23,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		8CE429B62B10B8F100CE2293 /* RudderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE429B52B10B8F100CE2293 /* RudderConfig.swift */; };
+		8CE429B82B10B90C00CE2293 /* SampleRudderConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CE429B72B10B90C00CE2293 /* SampleRudderConfig.plist */; };
 		956647E805DE52A6E445E035 /* Pods_Rudder_Branch_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A328786371C525E4001AE4 /* Pods_Rudder_Branch_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,9 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8CE429B42B10B8F100CE2293 /* Rudder-Branch_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rudder-Branch_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		8CE429B52B10B8F100CE2293 /* RudderConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RudderConfig.swift; sourceTree = "<group>"; };
+		8CE429B72B10B90C00CE2293 /* SampleRudderConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleRudderConfig.plist; sourceTree = "<group>"; };
 		91A7F83C7282017701511857 /* Pods-Rudder-Branch_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rudder-Branch_Example.release.xcconfig"; path = "Target Support Files/Pods-Rudder-Branch_Example/Pods-Rudder-Branch_Example.release.xcconfig"; sourceTree = "<group>"; };
 		92999F2623FAB7C0BA4713FD /* Pods_Rudder_Branch_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rudder_Branch_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A6F22BA9BF0D01DCE9C37C /* Rudder-Branch.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "Rudder-Branch.podspec"; path = "../Rudder-Branch.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -132,6 +137,8 @@
 		6003F593195388D20070C39A /* Example for Rudder-Branch */ = {
 			isa = PBXGroup;
 			children = (
+				8CE429B32B10B8AC00CE2293 /* RudderConfig */,
+				8CE429B42B10B8F100CE2293 /* Rudder-Branch_Example-Bridging-Header.h */,
 				6003F59C195388D20070C39A /* _AppDelegate.h */,
 				6003F59D195388D20070C39A /* _AppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -196,6 +203,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8CE429B32B10B8AC00CE2293 /* RudderConfig */ = {
+			isa = PBXGroup;
+			children = (
+				8CE429B72B10B90C00CE2293 /* SampleRudderConfig.plist */,
+				8CE429B52B10B8F100CE2293 /* RudderConfig.swift */,
+			);
+			path = RudderConfig;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,6 +264,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = arnab;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = WPX9KRKA8B;
+						LastSwiftMigration = 1500;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -280,6 +300,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				8CE429B82B10B90C00CE2293 /* SampleRudderConfig.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -394,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* _AppDelegate.m in Sources */,
+				8CE429B62B10B8F100CE2293 /* RudderConfig.swift in Sources */,
 				6003F5A7195388D20070C39A /* _ViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -523,6 +545,8 @@
 			baseConfigurationReference = BC11279BD94F3C96EAFC85DD /* Pods-Rudder-Branch_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WPX9KRKA8B;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rudder-Branch/Rudder-Branch-Prefix.pch";
 				INFOPLIST_FILE = "Rudder-Branch/Rudder-Branch-Info.plist";
@@ -530,6 +554,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Rudder-Branch/Rudder-Branch_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -540,6 +566,8 @@
 			baseConfigurationReference = 91A7F83C7282017701511857 /* Pods-Rudder-Branch_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WPX9KRKA8B;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rudder-Branch/Rudder-Branch-Prefix.pch";
 				INFOPLIST_FILE = "Rudder-Branch/Rudder-Branch-Info.plist";
@@ -547,6 +575,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Rudder-Branch/Rudder-Branch_Example-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -556,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0838F95783979110349BE63 /* Pods-Rudder-Branch_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -581,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43AF24CBDB2A8DCF51943FD8 /* Pods-Rudder-Branch_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
