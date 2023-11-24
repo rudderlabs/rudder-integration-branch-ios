@@ -45,11 +45,12 @@
             [RSLogger logError:@"RudderBranchIntegration: Branch Key is empty. Aborting initialization."];
             return nil;
         }
+        _branchInstance = [Branch getInstance:branchKey];
+        [RSLogger logDebug:@"RudderBranchIntegration: Branch SDK initialized."];
+        // Logging should be done after the Branch SDK gets initialized
         if (rudderConfig.logLevel >= RSLogLevelDebug) {
             [_branchInstance enableLogging];
         }
-        _branchInstance = [Branch getInstance:branchKey];
-        [RSLogger logDebug:@"RudderBranchIntegration: Branch SDK initialized."];
     }
     
     return self;
