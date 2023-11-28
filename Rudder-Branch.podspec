@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-branch-ios.git', :tag => "v#{s.version}" }
   s.platform         = :ios, "12.0"
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = deployment_target
 
   s.source_files = 'Rudder-Branch/Classes/**/*'
   
