@@ -67,7 +67,7 @@
     [[RSClient getInstance] track:@"Product Viewed" properties:[self getSingleProductPropertiesWithCustomProperties]];
 }
 - (IBAction)productListViewed:(id)sender {
-    [[RSClient getInstance] track:@"" properties:[self getMultipleProductProperties]];
+    [[RSClient getInstance] track:@"Product List Viewed" properties:[self getMultipleProductProperties]];
 }
 - (IBAction)productReviewed:(id)sender {
     [[RSClient getInstance] track:@"Product Reviewed" properties:[self getSingleProductPropertiesWithCustomProperties]];
