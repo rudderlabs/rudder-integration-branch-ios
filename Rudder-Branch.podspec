@@ -4,7 +4,6 @@ package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 branch_sdk_version = '~> 3.0.0'
 rudder_sdk_version = '~> 1.18'
-deployment_target = '12.0'
 branch_sdk = 'BranchSDK'
 
 Pod::Spec.new do |s|
@@ -20,8 +19,6 @@ Pod::Spec.new do |s|
   s.author           = { 'RudderStack' => 'arnab@rudderlabs.com' }
   s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-branch-ios.git', :tag => "v#{s.version}" }
   s.platform         = :ios, "12.0"
-
-  s.ios.deployment_target = deployment_target
 
   s.source_files = 'Rudder-Branch/Classes/**/*'
   
