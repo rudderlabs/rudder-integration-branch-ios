@@ -2,7 +2,7 @@ require 'json'
 
 package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
-branch_sdk_version = '~> 3.0.0'
+branch_sdk_version = '~> 3.4.4'
 rudder_sdk_version = '~> 1.18'
 branch_sdk = 'BranchSDK'
 

@@ -1,18 +1,18 @@
 PODS:
-  - BranchSDK (3.0.0)
+  - BranchSDK (3.4.4)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - MetricsReporter (1.1.1):
-    - RSCrashReporter (= 1.0.0)
+  - MetricsReporter (1.2.1):
+    - RSCrashReporter (= 1.0.1)
     - RudderKit (= 1.4.0)
-  - RSCrashReporter (1.0.0)
-  - Rudder (1.23.1):
-    - MetricsReporter (= 1.1.1)
-  - Rudder-Branch (1.0.0):
-    - BranchSDK (~> 3.0.0)
+  - RSCrashReporter (1.0.1)
+  - Rudder (1.27.0):
+    - MetricsReporter (= 1.2.1)
+  - Rudder-Branch (2.0.0):
+    - BranchSDK (~> 3.4.4)
     - Rudder (~> 1.18)
   - RudderKit (1.4.0)
 
@@ -34,14 +34,14 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BranchSDK: e9c0332b2655cf0357d93db479d07152b059e434
+  BranchSDK: 28bec34fb99c53ab8e86b7bf69cc55a4505fe0b3
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  MetricsReporter: 759631361ffd2b8f0d375b1225c8a631311f6da2
-  RSCrashReporter: e9ccaebd996263f8325a6cbef44ff74aa5f58e30
-  Rudder: 18897c785af9cfe84c2be2a1d15a645edbeda6d0
-  Rudder-Branch: dda8aa1017ce93f86f28f487a55d09f577db4a0a
+  MetricsReporter: 99596ee5003c69949ed2f50acc34aee83c42f843
+  RSCrashReporter: 6b8376ac729b0289ebe0908553e5f56d8171f313
+  Rudder: 3cfcd9e6c5359cd6d49f411101ed9b894e3b64bd
+  Rudder-Branch: 151cda4313371ac66345b571ef6b39ac38c90f77
   RudderKit: f272f9872183946452ac94cd7bb2244a71e6ca8f
 
 PODFILE CHECKSUM: a4ffd2edf494653d3954e5f55cf3451a06f75431
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

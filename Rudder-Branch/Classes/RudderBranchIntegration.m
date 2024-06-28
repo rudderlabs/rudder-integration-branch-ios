@@ -40,7 +40,7 @@
                                nil
         ];
         
-        NSString *branchKey = [destinationConfig objectForKey:@"branchKey"];
+        NSString *branchKey = @"key_test_ptpKUoFEaPOXz9dtgOodbehfFwkCiTO1"; //[destinationConfig objectForKey:@"branchKey"];
         if ([RudderUtils isEmpty:branchKey] == YES) {
             [RSLogger logError:@"RudderBranchIntegration: Branch Key is empty. Aborting initialization."];
             return nil;
@@ -48,9 +48,11 @@
         _branchInstance = [Branch getInstance:branchKey];
         [RSLogger logDebug:@"RudderBranchIntegration: Branch SDK initialized."];
         // Logging should be done after the Branch SDK gets initialized
-        if (rudderConfig.logLevel >= RSLogLevelDebug) {
-            [_branchInstance enableLogging];
-        }
+       
+        [Branch enableLogging];
+        
+       
+       
     }
     
     return self;
