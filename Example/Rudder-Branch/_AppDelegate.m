@@ -15,14 +15,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"RudderConfig" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"SampleRudderConfig" ofType:@"plist"];
     if (path != nil) {
+        
         NSURL *url = [NSURL fileURLWithPath:path];
         RudderConfig *rudderConfig = [RudderConfig createFrom:url];
         if (rudderConfig != nil) {
             RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
             [configBuilder withDataPlaneUrl:rudderConfig.PROD_DATA_PLANE_URL];
-            [configBuilder withLoglevel:RSLogLevelVerbose];
+            [configBuilder withLoglevel:RSLogLevelNone];
             [configBuilder withFactory:[RudderBranchFactory instance]];
             [configBuilder withTrackLifecycleEvens:NO];
             [RSClient getInstance:rudderConfig.WRITE_KEY config:[configBuilder build]];
