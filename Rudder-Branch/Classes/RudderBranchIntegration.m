@@ -48,9 +48,11 @@
         _branchInstance = [Branch getInstance:branchKey];
         [RSLogger logDebug:@"RudderBranchIntegration: Branch SDK initialized."];
         // Logging should be done after the Branch SDK gets initialized
-        if (rudderConfig.logLevel >= RSLogLevelDebug) {
-            [_branchInstance enableLogging];
+        if (rudderConfig.logLevel >= RSLogLevelDebug){
+            [Branch enableLogging];
         }
+       
+       
     }
     
     return self;
