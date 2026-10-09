@@ -11,7 +11,7 @@ PODS:
   - RSCrashReporter (1.0.1)
   - Rudder (1.27.0):
     - MetricsReporter (= 1.2.1)
-  - Rudder-Branch (2.0.0):
+  - Rudder-Branch (2.1.0):
     - BranchSDK (~> 3.4.4)
     - Rudder (~> 1.18)
   - RudderKit (1.4.0)
@@ -39,9 +39,9 @@ SPEC CHECKSUMS:
   MetricsReporter: 99596ee5003c69949ed2f50acc34aee83c42f843
   RSCrashReporter: 6b8376ac729b0289ebe0908553e5f56d8171f313
   Rudder: 3cfcd9e6c5359cd6d49f411101ed9b894e3b64bd
-  Rudder-Branch: 151cda4313371ac66345b571ef6b39ac38c90f77
+  Rudder-Branch: 4e7dafb6067d31bb901a5c60f4d877e4023add20
   RudderKit: f272f9872183946452ac94cd7bb2244a71e6ca8f
 
-PODFILE CHECKSUM: a4ffd2edf494653d3954e5f55cf3451a06f75431
+PODFILE CHECKSUM: 7974ef46340f5a8bafc654fb14d1d0605d55d141
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.17.0
